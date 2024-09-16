@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{38540EFE-1F25-4418-89A8-A7B701044349}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{93869DC1-2551-4F6E-8917-C7FAC22091CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Api", "src\CashFlow.Api\CashFlow.Api.csproj", "{6E1060D6-4C55-4F20-8B26-C8049E1552C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Domain", "src\CashFlow.Domain\CashFlow.Domain.csproj", "{25F6156A-9AE6-45CF-B57D-31032162CE0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{3A452767-2E5B-4F94-B0C4-51064AAD138B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Communication", "src\CashFlow.Communication\CashFlow.Communication.csproj", "{790C89AB-CD59-4DEB-B63C-A884EAF8B714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Exception", "src\CashFlow.Exception\CashFlow.Exception.csproj", "{73B803CA-1ED4-4C57-A1D7-9B9A47A4BF91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{CE15AB29-65E3-478C-B73A-BDCA0B731479}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6E1060D6-4C55-4F20-8B26-C8049E1552C4} = {38540EFE-1F25-4418-89A8-A7B701044349}
+		{25F6156A-9AE6-45CF-B57D-31032162CE0F} = {38540EFE-1F25-4418-89A8-A7B701044349}
+		{3A452767-2E5B-4F94-B0C4-51064AAD138B} = {38540EFE-1F25-4418-89A8-A7B701044349}
+		{790C89AB-CD59-4DEB-B63C-A884EAF8B714} = {38540EFE-1F25-4418-89A8-A7B701044349}
+		{73B803CA-1ED4-4C57-A1D7-9B9A47A4BF91} = {38540EFE-1F25-4418-89A8-A7B701044349}
+		{CE15AB29-65E3-478C-B73A-BDCA0B731479} = {38540EFE-1F25-4418-89A8-A7B701044349}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E1060D6-4C55-4F20-8B26-C8049E1552C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E1060D6-4C55-4F20-8B26-C8049E1552C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E1060D6-4C55-4F20-8B26-C8049E1552C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E1060D6-4C55-4F20-8B26-C8049E1552C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F6156A-9AE6-45CF-B57D-31032162CE0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F6156A-9AE6-45CF-B57D-31032162CE0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F6156A-9AE6-45CF-B57D-31032162CE0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F6156A-9AE6-45CF-B57D-31032162CE0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A452767-2E5B-4F94-B0C4-51064AAD138B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A452767-2E5B-4F94-B0C4-51064AAD138B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A452767-2E5B-4F94-B0C4-51064AAD138B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A452767-2E5B-4F94-B0C4-51064AAD138B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{790C89AB-CD59-4DEB-B63C-A884EAF8B714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{790C89AB-CD59-4DEB-B63C-A884EAF8B714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{790C89AB-CD59-4DEB-B63C-A884EAF8B714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{790C89AB-CD59-4DEB-B63C-A884EAF8B714}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B803CA-1ED4-4C57-A1D7-9B9A47A4BF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B803CA-1ED4-4C57-A1D7-9B9A47A4BF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B803CA-1ED4-4C57-A1D7-9B9A47A4BF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B803CA-1ED4-4C57-A1D7-9B9A47A4BF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE15AB29-65E3-478C-B73A-BDCA0B731479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE15AB29-65E3-478C-B73A-BDCA0B731479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE15AB29-65E3-478C-B73A-BDCA0B731479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE15AB29-65E3-478C-B73A-BDCA0B731479}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
