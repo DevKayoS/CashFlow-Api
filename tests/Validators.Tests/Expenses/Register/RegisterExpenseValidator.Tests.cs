@@ -1,6 +1,7 @@
 using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Communication.Enum;
 using CashFlow.Communication.Requests;
+using CommonTestUtilities.Requests;
 
 namespace Validators.Tests.Expenses.Register;
 
@@ -12,16 +13,13 @@ public class RegisterExpenseValidatorTests
     {
         //Arrange (pegando os dados)
         var validator = new RegisterExpenseValidator();
-        var request = new RequestRegisterExpenseJson
-        {
-            Amount = 100,
-            Date = DateTime.Now.AddDays(-1),
-            Description = "Description",
-            Title = "Apple",
-            PaymentType = PaymentType.DebitCard
-        };
+        
+        //pegando dados falsos
+        var  fakeBuilder = new RequestRegisterExpenseJsonBuilder();
+        var requestFake = fakeBuilder.Build();
+        
         //Act (criando acao para testar os dados criados)
-        var result = validator.Validate(request);
+        var result = validator.Validate(requestFake);
 
         //Assert (verficar se a resposta seria oq era esperado)
         // espero que seja verdadeiro a request
