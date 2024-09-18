@@ -11,15 +11,15 @@ public class RegisterExpenseValidatorTests
     [Fact]
     public void Success()
     {
-        //Arrange (pegando os dados)
+    //Arrange (pegando os dados)
         var validator = new RegisterExpenseValidator();
         
         //pegando dados falsos
-        var  fakeBuilder = new RequestRegisterExpenseJsonBuilder();
-        var requestFake = fakeBuilder.Build();
+         var request = RequestRegisterExpenseJsonBuilder.Build();
+      
         
         //Act (criando acao para testar os dados criados)
-        var result = validator.Validate(requestFake);
+        var result = validator.Validate(request);
 
         //Assert (verficar se a resposta seria oq era esperado)
         // espero que seja verdadeiro a request

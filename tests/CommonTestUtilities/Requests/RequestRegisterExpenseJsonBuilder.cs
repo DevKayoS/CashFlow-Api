@@ -6,7 +6,7 @@ namespace CommonTestUtilities.Requests;
 
 public class RequestRegisterExpenseJsonBuilder
 {
-    public RequestRegisterExpenseJson Build()
+    public static RequestRegisterExpenseJson Build()
     {
         /*
          Pode ser feito da seguinte forma tbm 
