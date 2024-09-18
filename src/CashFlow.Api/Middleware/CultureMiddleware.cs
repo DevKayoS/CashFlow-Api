@@ -14,14 +14,19 @@ public class CultureMiddleware
     
     public async Task Invoke(HttpContext context)
     {
-        var culture = context.Request.Headers.AcceptLanguage.FirstOrDefault();
+        //pegando todas as linguas que o .NET da suporte e salvando em uma lista
+        var supportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures).ToList();
+        
+        var requestedCulture = context.Request.Headers.AcceptLanguage.FirstOrDefault();
 
         // colocando o ingles como linguagem default
         var cultureInfo = new CultureInfo("en");
         
-        if (string.IsNullOrWhiteSpace(culture) == false)
+        // verificando se veio alguma lingua no header e se ela e suportada no .NET verificando se esta dentro da lista de linguas
+        if (string.IsNullOrWhiteSpace(requestedCulture) == false 
+            && supportedLanguages.Exists(language => language.Name.Equals(requestedCulture)))
         {
-            cultureInfo = new CultureInfo(culture);
+            cultureInfo = new CultureInfo(requestedCulture);
         }
 
         CultureInfo.CurrentCulture = cultureInfo;
