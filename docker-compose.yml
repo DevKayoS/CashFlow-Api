@@ -1,16 +1,16 @@
 ﻿services:
   mysql:
-    image: mysql:latest
+    image: mysql:8.0.25
     container_name: mysql-container
     environment:
       MYSQL_ROOT_PASSWORD: teste123
       MYSQL_DATABASE: cashflow
       MYSQL_USER: kayo
-      MYSQL_PASWORD: teste123
+      MYSQL_PASSWORD: teste123
     ports:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-        
+
 volumes:
   mysql-data:
