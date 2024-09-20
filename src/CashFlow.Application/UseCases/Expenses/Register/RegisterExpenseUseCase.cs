@@ -4,7 +4,6 @@ using CashFlow.Communication.Responses;
 using CashFlow.Domain.Entities;
 using CashFlow.Domain.Enums;
 using CashFlow.Exception.ExceptionsBase;
-using CashFlow.Infrastructure.DataAccess;
 using PaymentType = CashFlow.Domain.Enums.PaymentType;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
@@ -15,8 +14,6 @@ public class RegisterExpenseUseCase
     {
         Validate(request);
 
-        var dbContext = new CashFlowDbContext();
-
         var entity = new Expense
         {
             Amount = request.Amount,
@@ -26,8 +23,7 @@ public class RegisterExpenseUseCase
             PaymentType = (Domain.Enums.PaymentType)request.PaymentType
         };
 
-        dbContext.Expenses.Add(entity);
-        
+    
         return new ResponseRegisteredExpenseJson();
     }
 
