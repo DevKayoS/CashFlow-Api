@@ -9,12 +9,19 @@ using PaymentType = CashFlow.Domain.Enums.PaymentType;
 
 namespace CashFlow.Application.UseCases.Expenses.Register;
 
-public class RegisterExpenseUseCase
+public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 {
+    private readonly IExpensesRepository _repository;
+    
+    public RegisterExpenseUseCase(IExpensesRepository repository)
+    {
+        _repository = repository;
+    }
+    
     public ResponseRegisteredExpenseJson Execute(RequestRegisterExpenseJson request)
     {
         Validate(request);
-
+                
         var entity = new Expense
         {
             Amount = request.Amount,
@@ -24,6 +31,8 @@ public class RegisterExpenseUseCase
             PaymentType = (Domain.Enums.PaymentType)request.PaymentType
         };
     
+        _repository.Add(entity);
+
         return new ResponseRegisteredExpenseJson();
     }
 
