@@ -22,7 +22,6 @@ public class RegisterExpenseUseCase
             Title = request.Title,
             PaymentType = (Domain.Enums.PaymentType)request.PaymentType
         };
-
     
         return new ResponseRegisteredExpenseJson();
     }
