@@ -5,16 +5,8 @@ namespace CashFlow.Infrastructure.DataAccess;
 
 internal class CashFlowDbContext : DbContext
 {
-    
+    public CashFlowDbContext(DbContextOptions options) : base(options) { }
     public DbSet<Expense> Expenses { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var connectionString = "Server=localhost;Port=3306;Database=cashflow;Uid=root;Pwd=teste123;";
-        var serverVersion = new MySqlServerVersion(new Version(8, 4, 2));
-        
-        optionsBuilder.UseMySql(connectionString, serverVersion);
-    }
 }
 
 // comando config mysql shell> docker exec -it mysql1 mysql -uroot -p

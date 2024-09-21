@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 // configurando injecao de dependencia do projeto de infraestrutura ja que esta como internal
 // pode ser feito assim -> DependencyInjectionExtension.AddInfraestructure(builder.Services);
-builder.Services.AddInfraestructure();
+builder.Services.AddInfraestructure(builder.Configuration);
 
 builder.Services.AddApplication();
 
