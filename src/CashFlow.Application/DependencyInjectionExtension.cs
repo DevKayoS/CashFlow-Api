@@ -14,11 +14,11 @@ public static class DependencyInjectionExtension
 
     private static void AddUseCase(IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(AutoMapping));
+        services.AddScoped<IRegisterExpenseUseCase, RegisterExpenseUseCase>();        
     }
 
     private static void AddAutoMapper(IServiceCollection services)
     {
-        services.AddScoped<AutoMapping>();        
+        services.AddAutoMapper(typeof(AutoMapping));
     }
 }
