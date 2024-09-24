@@ -14,6 +14,7 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 {
     private readonly IExpensesRepository _repository;
     private readonly IUnitOfWork _unitOfWork;
+
     public RegisterExpenseUseCase(IExpensesRepository repository, IUnitOfWork unitOfWork)
     {
         _repository = repository;

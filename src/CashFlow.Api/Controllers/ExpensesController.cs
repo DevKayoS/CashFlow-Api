@@ -14,9 +14,8 @@ namespace CashFlow.Api.Controllers
         public async Task<IActionResult> Register([FromBody] RequestRegisterExpenseJson request, [FromServices] IRegisterExpenseUseCase useCase)
         {
             var response = await useCase.Execute(request);
-            var test = 2;
+
             return Created(string.Empty, response);
-           
         }
     }
 }

@@ -1,3 +1,4 @@
+using CashFlow.Application.AutoMapper;
 using CashFlow.Application.UseCases.Expenses.Register;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +8,17 @@ public static class DependencyInjectionExtension
 {
     public static void AddApplication(this IServiceCollection services)
     {
-        services.AddScoped<IRegisterExpenseUseCase, RegisterExpenseUseCase>();
+        AddUseCase(services);
+        AddAutoMapper(services);
+    }
+
+    private static void AddUseCase(IServiceCollection services)
+    {
+        services.AddAutoMapper(typeof(AutoMapping));
+    }
+
+    private static void AddAutoMapper(IServiceCollection services)
+    {
+        services.AddScoped<AutoMapping>();        
     }
 }
