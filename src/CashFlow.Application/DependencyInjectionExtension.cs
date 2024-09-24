@@ -15,6 +15,7 @@ public static class DependencyInjectionExtension
     private static void AddUseCase(IServiceCollection services)
     {
         services.AddScoped<IRegisterExpenseUseCase, RegisterExpenseUseCase>();        
+        services.AddScoped<IGetAllExpensesUseCase, GetAllExpensesUseCase>();        
     }
 
     private static void AddAutoMapper(IServiceCollection services)
