@@ -11,6 +11,7 @@ namespace CashFlow.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredExpenseJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(ResponseErrorJson),StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register([FromBody] RequestRegisterExpenseJson request, [FromServices] IRegisterExpenseUseCase useCase)
         {
             var response = await useCase.Execute(request);
