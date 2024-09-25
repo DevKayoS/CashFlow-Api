@@ -11,8 +11,9 @@ namespace CashFlow.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseRegisteredExpenseJson), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(ResponseErrorJson),StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Register([FromBody] RequestRegisterExpenseJson request, [FromServices] IRegisterExpenseUseCase useCase)
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Register([FromBody] RequestRegisterExpenseJson request,
+            [FromServices] IRegisterExpenseUseCase useCase)
         {
             var response = await useCase.Execute(request);
 
@@ -30,8 +31,19 @@ namespace CashFlow.Api.Controllers
             {
                 return Ok(response);
             }
-            
+
             return NoContent();
         }
-    }
+
+        [HttpGet]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(ResponseExpenseJson),StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetById([FromServices] IGetExpenseByIdUseCase useCase, [FromRoute] long id)
+        {
+            var response = await useCase.Execute(id);
+            
+            return Ok(response);
+        }
+}
 }
