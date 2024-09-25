@@ -28,8 +28,6 @@ public class ExceptionFilter : IExceptionFilter
         context.HttpContext.Response.StatusCode = cashFlowException.StatusCode;
         context.Result = new ObjectResult(errorResponse);
 
-        
-     
     }
     
     private void ThrowUnknownError(ExceptionContext context)
