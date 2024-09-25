@@ -1,6 +1,8 @@
 using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
+using CashFlow.Exception;
+using CashFlow.Exception.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CashFlow.Api.Controllers
@@ -42,6 +44,11 @@ namespace CashFlow.Api.Controllers
         public async Task<IActionResult> GetById([FromServices] IGetExpenseByIdUseCase useCase, [FromRoute] long id)
         {
             var response = await useCase.Execute(id);
+
+            if (response is null)
+            {
+                throw new NotFoundException(ResourceErrorMessages.EXPENSE_NOT_FOUND);
+            }
             
             return Ok(response);
         }
