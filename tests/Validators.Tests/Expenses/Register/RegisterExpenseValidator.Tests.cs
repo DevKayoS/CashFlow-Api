@@ -7,14 +7,14 @@ using FluentAssertions;
 
 namespace Validators.Tests.Expenses.Register;
 
-public class RegisterExpenseValidatorTests
+public class ExpenseValidatorTests
 {
     // com o [Fact] faz com que essa funcao seja um teste de unidade
     [Fact]
     public void Success()
     {
     //Arrange (pegando os dados)
-        var validator = new RegisterExpenseValidator();
+        var validator = new ExpenseValidator();
         
         //pegando dados falsos
          var request = RequestRegisterExpenseJsonBuilder.Build();
@@ -34,7 +34,7 @@ public class RegisterExpenseValidatorTests
     public void ErrorTitleEmpty(string title)
     {
         // Arrange
-        var validator = new RegisterExpenseValidator();
+        var validator = new ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Title = title;
 
@@ -50,7 +50,7 @@ public class RegisterExpenseValidatorTests
     public void ErrorDateFuture()
     {
         // Arrange
-        var validator = new RegisterExpenseValidator();
+        var validator = new ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Date = DateTime.UtcNow.AddDays(1);
 
@@ -66,7 +66,7 @@ public class RegisterExpenseValidatorTests
     public void ErrorPaymentTypeInvalid()
     {
         // Arrange
-        var validator = new RegisterExpenseValidator();
+        var validator = new ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.PaymentType = (PaymentType)900;
 
@@ -84,7 +84,7 @@ public class RegisterExpenseValidatorTests
     public void ErrorAmountInvalid(decimal amount)
     {
         // Arrange
-        var validator = new RegisterExpenseValidator();
+        var validator = new ExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Amount = amount;
         

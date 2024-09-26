@@ -6,9 +6,9 @@ using FluentValidation;
 namespace CashFlow.Application.UseCases.Expenses.Register;
 
 // usando fluent validator
-public class RegisterExpenseValidator : AbstractValidator<RequestRegisterExpenseJson>
+public class ExpenseValidator : AbstractValidator<RequestExpenseJson>
 {
-    public RegisterExpenseValidator()
+    public ExpenseValidator()
     {
         // fazendo encadeamento de chamadas
         RuleFor(expense => expense.Title).NotEmpty().WithMessage(ResourceErrorMessages.TITLE_REQUIRED);
