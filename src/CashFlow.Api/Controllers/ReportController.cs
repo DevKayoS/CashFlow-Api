@@ -11,12 +11,10 @@ namespace CashFlow.Api.Controllers
         [HttpGet("excel")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> GetExcel([FromServices] IGenerateExpensesReportExcelUseCase useCase ,[FromHeader] DateOnly request)
+        public async Task<IActionResult> GetExcel([FromServices] IGenerateExpensesReportExcelUseCase useCase ,[FromHeader] DateOnly month)
         {
-            byte[] file = new byte[1];
+            byte[] file = await useCase.Execute(month);
 
-            var result = await useCase.Execute(request);
-            
             if (file.Length > 0)
             {
                 return File(file, MediaTypeNames.Application.Octet, "report.xlsx");

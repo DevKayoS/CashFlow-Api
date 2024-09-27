@@ -16,8 +16,12 @@ public class GenerateExpensesReportExcelUseCase : IGenerateExpensesReportExcelUs
        var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
         
        InsertHeader(worksheet);
+
+       var file = new MemoryStream();
        
-        return new byte[1];
+       workbook.SaveAs(file);
+       
+        return file.ToArray();
     }
 
     private void InsertHeader(IXLWorksheet worksheet)
