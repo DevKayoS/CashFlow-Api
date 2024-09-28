@@ -69,7 +69,25 @@ namespace CashFlow.Domain.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date.
+        ///   Looks up a localized string similar to espèces.
+        /// </summary>
+        internal static string CASH {
+            get {
+                return ResourceManager.GetString("CASH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Carte de Crédit.
+        /// </summary>
+        internal static string CREDIT_CARD {
+            get {
+                return ResourceManager.GetString("CREDIT_CARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Date.
         /// </summary>
         internal static string DATE {
             get {
@@ -78,11 +96,29 @@ namespace CashFlow.Domain.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Description.
+        ///   Looks up a localized string similar to Carte de Débit.
+        /// </summary>
+        internal static string DEBIT_CARD {
+            get {
+                return ResourceManager.GetString("DEBIT_CARD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Description.
         /// </summary>
         internal static string DESCRIPTION {
             get {
                 return ResourceManager.GetString("DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfert Électronique.
+        /// </summary>
+        internal static string ELETRONIC_TRANSFER {
+            get {
+                return ResourceManager.GetString("ELETRONIC_TRANSFER", resourceCulture);
             }
         }
         
@@ -96,7 +132,7 @@ namespace CashFlow.Domain.Reports {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to titre.
+        ///   Looks up a localized string similar to Titre.
         /// </summary>
         internal static string TITLE {
             get {

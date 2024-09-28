@@ -22,15 +22,27 @@
         <value>Montante</value>
     </data>
     <data name="DATE" xml:space="preserve">
-        <value>Date</value>
+        <value> Date</value>
     </data>
     <data name="DESCRIPTION" xml:space="preserve">
-        <value>Description</value>
+        <value> Description</value>
     </data>
     <data name="PAYMENT_TYPE" xml:space="preserve">
         <value>Type de paiement</value>
     </data>
     <data name="TITLE" xml:space="preserve">
-        <value>titre</value>
+        <value>Titre</value>
+    </data>
+    <data name="ELETRONIC_TRANSFER" xml:space="preserve">
+        <value>Transfert Électronique</value>
+    </data>
+    <data name="DEBIT_CARD" xml:space="preserve">
+        <value>Carte de Débit</value>
+    </data>
+    <data name="CREDIT_CARD" xml:space="preserve">
+        <value>Carte de Crédit</value>
+    </data>
+    <data name="CASH" xml:space="preserve">
+        <value>espèces</value>
     </data>
 </root>
