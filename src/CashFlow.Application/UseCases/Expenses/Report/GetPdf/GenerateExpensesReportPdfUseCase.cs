@@ -48,7 +48,7 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
     {
         var section = document.AddSection();
         section.PageSetup = document.DefaultPageSetup.Clone();
-
+        // setting document margin
         section.PageSetup.PageFormat = PageFormat.A4;
         section.PageSetup.LeftMargin = 40;
         section.PageSetup.RightMargin = 40;
