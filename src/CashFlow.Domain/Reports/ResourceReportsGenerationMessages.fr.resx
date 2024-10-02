@@ -45,4 +45,7 @@
     <data name="CASH" xml:space="preserve">
         <value>espèces</value>
     </data>
+    <data name="EXPENSES_FOR" xml:space="preserve">
+        <value> Depenses pour</value>
+    </data>
 </root>
