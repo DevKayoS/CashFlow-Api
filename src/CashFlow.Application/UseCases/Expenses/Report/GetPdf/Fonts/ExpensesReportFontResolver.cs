@@ -9,11 +9,9 @@ public class ExpensesReportFontResolver : IFontResolver
     {
         var stream = ReadFontFile(faceName);
 
-        if (stream is null)
-        {
-            stream = ReadFontFile(FontHelper.DEFAULT_FONT);
-        }
-
+        // fazendo um if
+        stream ??= ReadFontFile(FontHelper.DEFAULT_FONT);
+        
         var length = (int)stream!.Length;
 
         var data = new byte[length];
