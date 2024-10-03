@@ -26,8 +26,13 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         }
         // generate void document
         var document = CreateDocument(month);
-        //generate page
         var page = CreatePage(document);
+
+        var paragraph = page.AddParagraph();
+        var title = string.Format("Total spent in {0}", month.ToString("Y"));
+
+        paragraph.AddFormattedText(title, new Font {Name = FontHelper.RALEWAY_REGULAR, Size = 15});
+        
         return [];
     }
 
