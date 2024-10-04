@@ -32,6 +32,6 @@ public class ExpensesReportFontResolver : IFontResolver
     {
         var assembly = Assembly.GetExecutingAssembly();
 
-        return assembly.GetManifestResourceStream($"CashFlow.Application.UseCases.Expenses.Report.GetPdf.Fonts.{faceName}.ttfa");
+        return assembly.GetManifestResourceStream($"CashFlow.Application.UseCases.Expenses.Report.GetPdf.Fonts.{faceName}.ttf");
     }
 }
