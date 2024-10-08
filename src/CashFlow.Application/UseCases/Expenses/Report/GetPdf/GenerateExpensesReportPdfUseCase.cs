@@ -33,25 +33,10 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
 
         var table = page.AddTable();
         table.AddColumn("300");
-        
-        var row = table.AddRow();
-        //row.Cells[0].AddImage("caminho do arquivo com a imagem");
-        row.Cells[0].AddParagraph("Hey, Kayo Vinicius");
-        row.Cells[0].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
-        row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
-        
-        var paragraph = page.AddParagraph();
-        paragraph.Format.SpaceBefore = "40";
-        paragraph.Format.SpaceAfter = "40";
-        
-        var title = string.Format("Total spent in {0}", month.ToString("Y"));
 
-        paragraph.AddFormattedText(title, new Font {Name = FontHelper.RALEWAY_REGULAR, Size = 15});
-        paragraph.AddLineBreak();
-
+        CreateHeaderWithProfilePhotoAndName(page);
         var totalExpenses = expenses.Sum(expense => expense.Amount);
-        
-        paragraph.AddFormattedText($"{CURRENCY_SYMBOL} {totalExpenses}", new Font { Name = FontHelper.WORKSANS_BLACK , Size = 50});
+        CreateTotalSpentSection(page, month, totalExpenses);
         
         
         return RenderDocument(document);
@@ -102,5 +87,36 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         renderer.PdfDocument.Save(file);
 
         return file.ToArray();
+    }
+
+    private void CreateHeaderWithProfilePhotoAndName(Section page)
+    {
+        var table = page.AddTable();
+        var row = table.AddRow();
+        //row.Cells[0].AddImage("caminho do arquivo com a imagem");
+        row.Cells[0].AddParagraph("Hey, Kayo Vinicius");
+        row.Cells[0].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
+        row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+        
+    }
+
+
+    private void CreateTotalSpentSection(Section page, DateOnly month, decimal totalExpenses)
+    {
+        var title = string.Format("Total spent in {0}", month.ToString("Y"));
+        var paragraph = page.AddParagraph();
+        paragraph.Format.SpaceBefore = "40";
+        paragraph.Format.SpaceAfter = "40";
+        
+        paragraph.AddFormattedText(title, new Font {Name = FontHelper.RALEWAY_REGULAR, Size = 15});
+        paragraph.AddLineBreak();
+
+        var totalExpenses = expenses.Sum(expense => expense.Amount);
+        
+        paragraph.AddFormattedText($"{CURRENCY_SYMBOL} {totalExpenses}", new Font { Name = FontHelper.WORKSANS_BLACK , Size = 50});
+        
+        
+       
+
     }
 }
