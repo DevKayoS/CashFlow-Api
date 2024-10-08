@@ -35,9 +35,9 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         table.AddColumn("300");
 
         CreateHeaderWithProfilePhotoAndName(page);
+        
         var totalExpenses = expenses.Sum(expense => expense.Amount);
         CreateTotalSpentSection(page, month, totalExpenses);
-        
         
         return RenderDocument(document);
     }
@@ -68,11 +68,6 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         
         return section;
     }
-/// <summary>
-///  this function should be able to return the pdf archive
-/// </summary>
-/// <param name="document"></param>
-/// <returns></returns>
     private byte[] RenderDocument(Document document)
     {
         var renderer = new PdfDocumentRenderer
@@ -88,7 +83,6 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
 
         return file.ToArray();
     }
-
     private void CreateHeaderWithProfilePhotoAndName(Section page)
     {
         var table = page.AddTable();
@@ -99,11 +93,10 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
         
     }
-
-
     private void CreateTotalSpentSection(Section page, DateOnly month, decimal totalExpenses)
     {
         var title = string.Format("Total spent in {0}", month.ToString("Y"));
+
         var paragraph = page.AddParagraph();
         paragraph.Format.SpaceBefore = "40";
         paragraph.Format.SpaceAfter = "40";
@@ -111,8 +104,6 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         paragraph.AddFormattedText(title, new Font {Name = FontHelper.RALEWAY_REGULAR, Size = 15});
         paragraph.AddLineBreak();
 
-        var totalExpenses = expenses.Sum(expense => expense.Amount);
-        
         paragraph.AddFormattedText($"{CURRENCY_SYMBOL} {totalExpenses}", new Font { Name = FontHelper.WORKSANS_BLACK , Size = 50});
         
         
