@@ -2,6 +2,7 @@ using CashFlow.Application.UseCases.Expenses.Register.Report.GetPdf.Fonts;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
 using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using PdfSharp.Fonts;
 
@@ -31,18 +32,18 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         var page = CreatePage(document);
 
         var table = page.AddTable();
-        table.AddColumn();
-        table.AddColumn();
+        table.AddColumn("300");
         
         var row = table.AddRow();
-        //row.Cells[0].AddImage("https://avatars.githubusercontent.com/u/157029608?v=4");
-        row.Cells[1].AddParagraph("Hey, Kayo Vinicius");
-        row.Cells[1].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
-                
+        //row.Cells[0].AddImage("caminho do arquivo com a imagem");
+        row.Cells[0].AddParagraph("Hey, Kayo Vinicius");
+        row.Cells[0].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
+        row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
         
-        
-
         var paragraph = page.AddParagraph();
+        paragraph.Format.SpaceBefore = "40";
+        paragraph.Format.SpaceAfter = "40";
+        
         var title = string.Format("Total spent in {0}", month.ToString("Y"));
 
         paragraph.AddFormattedText(title, new Font {Name = FontHelper.RALEWAY_REGULAR, Size = 15});
