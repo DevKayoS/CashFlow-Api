@@ -1,4 +1,5 @@
 using System.Reflection;
+using CashFlow.Application.UseCases.Expenses.Register.Report.GetPdf.Colors;
 using CashFlow.Application.UseCases.Expenses.Register.Report.GetPdf.Fonts;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
@@ -40,6 +41,30 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         foreach (var expense in expenses)
         {
             var table = CreateExpenseTable(page);
+            var row = table.AddRow();
+            row.Height = 25;
+            
+            row.Cells[0].AddParagraph(expense.Title);
+            row.Cells[0].Format.Font = new Font
+            {
+                Name = FontHelper.RALEWAY_BLACK, Size = 14, Color = ColorsHelper.BLACK
+            };
+            row.Cells[0].Shading.Color = ColorsHelper.RED_LIGHT;
+            row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+            // merge 2 columns for to right
+            row.Cells[0].MergeRight = 2;
+            row.Cells[0].Format.LeftIndent = 20;
+            
+            row.Cells[3].AddParagraph(ResourceReportsGenerationMessages.AMOUNT);
+            row.Cells[3].Format.Font = new Font
+            {
+                Name = FontHelper.RALEWAY_BLACK, Size = 14, Color = ColorsHelper.WHITE
+            };
+            row.Cells[3].Shading.Color = ColorsHelper.RED_DARK;
+            row.Cells[3].VerticalAlignment = VerticalAlignment.Center;
+
+            table.AddRow().Height = 30;
+            
         }
         
         
@@ -90,14 +115,14 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
     private void CreateHeaderWithProfilePhotoAndName(Section page)
     {
         var table = page.AddTable();
-        table.AddColumn();
+        //table.AddColumn();
         table.AddColumn("300");
 
         var row = table.AddRow();
         /*
          code to add image to the header pdf file
         var assembly = Assembly.GetExecutingAssembly();
-        var directoryName = Path.GetDirectoryName(assembly.Location);
+        var directoryName  = Path.GetDirectoryName(assembly.Location);
         row.Cells[0].AddImage(Path.Combine(directoryName!, "Logo", "ProfilePhoto.png"));
         */
         row.Cells[0].AddParagraph("Hey, Kayo Vinicius");
