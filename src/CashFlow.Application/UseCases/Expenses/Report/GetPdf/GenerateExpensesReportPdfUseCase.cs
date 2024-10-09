@@ -31,14 +31,17 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         // generate void document
         var document = CreateDocument(month);
         var page = CreatePage(document);
-
-        var table = page.AddTable();
-        table.AddColumn("300");
-
+        
         CreateHeaderWithProfilePhotoAndName(page);
         
         var totalExpenses = expenses.Sum(expense => expense.Amount);
         CreateTotalSpentSection(page, month, totalExpenses);
+        // added table for amounts
+        foreach (var expense in expenses)
+        {
+            var table = CreateExpenseTable(page);
+        }
+        
         
         return RenderDocument(document);
     }
@@ -87,6 +90,9 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
     private void CreateHeaderWithProfilePhotoAndName(Section page)
     {
         var table = page.AddTable();
+        table.AddColumn();
+        table.AddColumn("300");
+
         var row = table.AddRow();
         /*
          code to add image to the header pdf file
@@ -97,7 +103,18 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         row.Cells[0].AddParagraph("Hey, Kayo Vinicius");
         row.Cells[0].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
         row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
+    }
+
+    private Table CreateExpenseTable(Section page)
+    {
+        var table = page.AddTable();
+        table.AddColumn("195").Format.Alignment = ParagraphAlignment.Left;
+        table.AddColumn("80").Format.Alignment = ParagraphAlignment.Center;
+        table.AddColumn("120").Format.Alignment = ParagraphAlignment.Center;
+        table.AddColumn("120").Format.Alignment = ParagraphAlignment.Right;
+
         
+        return table;
     }
     private void CreateTotalSpentSection(Section page, DateOnly month, decimal totalExpenses)
     {
@@ -111,9 +128,5 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
         paragraph.AddLineBreak();
 
         paragraph.AddFormattedText($"{CURRENCY_SYMBOL} {totalExpenses}", new Font { Name = FontHelper.WORKSANS_BLACK , Size = 50});
-        
-        
-       
-
     }
 }
