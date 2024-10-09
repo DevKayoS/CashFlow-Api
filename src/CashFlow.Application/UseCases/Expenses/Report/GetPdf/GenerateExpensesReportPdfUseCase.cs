@@ -1,3 +1,4 @@
+using System.Reflection;
 using CashFlow.Application.UseCases.Expenses.Register.Report.GetPdf.Fonts;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
@@ -87,7 +88,12 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
     {
         var table = page.AddTable();
         var row = table.AddRow();
-        //row.Cells[0].AddImage("caminho do arquivo com a imagem");
+        /*
+         code to add image to the header pdf file
+        var assembly = Assembly.GetExecutingAssembly();
+        var directoryName = Path.GetDirectoryName(assembly.Location);
+        row.Cells[0].AddImage(Path.Combine(directoryName!, "Logo", "ProfilePhoto.png"));
+        */
         row.Cells[0].AddParagraph("Hey, Kayo Vinicius");
         row.Cells[0].Format.Font = new Font { Name = FontHelper.RALEWAY_BLACK, Size = 16 };
         row.Cells[0].VerticalAlignment = VerticalAlignment.Center;
