@@ -1,10 +1,12 @@
 using CashFlow.Domain.Enums;
 
-public static class ConvertPayment
+namespace CashFlow.Domain.Extensions;
+
+public static class PaymentTypeExtensions
 {
-    public static string Convert(PaymentType payment)
+    public static string PaymentTypeToString(this PaymentType paymentType)
     {
-        return payment switch
+        return paymentType switch
         {
             PaymentType.Cash => "Dinheiro",
             PaymentType.CreditCard => "Cartão de crédito",
