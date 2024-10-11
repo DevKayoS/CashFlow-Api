@@ -64,8 +64,19 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
             row.Cells[2].AddParagraph(expense.PaymentType.PaymentTypeToString());
             SetStyleBaseForExpenseInformation(row.Cells[2]);
 
-            AddAmountForExpense(row.Cells[3], expense.Amount);     
-            
+            AddAmountForExpense(row.Cells[3], expense.Amount);
+
+            if (string.IsNullOrWhiteSpace(expense.Description) is false)
+            {
+                var descriptionRow = table.AddRow();
+                descriptionRow.Height = HEIGHT_ROW_EXPENSE_TABLE;
+                
+                descriptionRow.Cells[0].AddParagraph(expense.Description);
+                AddDescriptionForExpense( descriptionRow.Cells[0]);
+
+                row.Cells[3].MergeDown = 1;
+            }
+                
             AddWhiteSpace(table);
         }
         
@@ -196,6 +207,16 @@ public class GenerateExpensesReportPdfUseCase : IGenerateExpensesReportPdfUseCas
             { Name = FontHelper.WORKSANS_REGULAR, Size = 14, Color = ColorsHelper.BLACK };
         cell.Shading.Color = ColorsHelper.WHITE;
         cell.VerticalAlignment = VerticalAlignment.Center;  
+    }
+
+    private void AddDescriptionForExpense(Cell cell)
+    {
+        cell.Format.Font = new Font
+            { Name = FontHelper.WORKSANS_REGULAR, Size = 10, Color = ColorsHelper.BLACK };
+        cell.Shading.Color = ColorsHelper.GREEN_LIGHT;
+        cell.VerticalAlignment = VerticalAlignment.Center;  
+        cell.MergeRight = 2;
+        cell.Format.LeftIndent = 20;
     }
 
     private void AddWhiteSpace(Table table)
