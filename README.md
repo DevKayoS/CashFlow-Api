@@ -13,6 +13,15 @@ Dentre os pacotes NuGet utilizados, o **AutoMapper** é o responsável pelo mape
 - **Geração de Relatórios**: Capacidade de exportar relatórios detalhados para **PDF e Excel**, oferecendo uma análise visual e eficaz das despesas
 - **RESTfull API com documentação Swagger**: Interface documentada que facilita a integração e o teste por parte dos desenvolvedores
 
+## Construido com
+![badge-dot-net]
+![badge-rider]
+![badge-arch-linux]
+![badge-docker]
+![badge-mysql]
+![badge-swagger]
+
+
 
 ## Getting Started
 
@@ -37,3 +46,12 @@ Para obter uma copia local funcionando, siga estes passos simples.
 
 <!-- Links -->
 [dot-net-sdk]: https://dotnet.microsoft.com/pt-br/download/dotnet/8.0
+
+<!-- Badges -->
+[badge-dot-net]: https://img.shields.io/badge/.NET-512BD4?logo=dotnet&logoColor=fff&style=for-the-badge
+[badge-rider]: https://img.shields.io/badge/Rider-000?logo=rider&logoColor=fff&style=for-the-badge
+[badge-arch-linux]: https://img.shields.io/badge/Arch%20Linux-1793D1?logo=archlinux&logoColor=fff&style=for-the-badge
+[badge-docker]: https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff&style=for-the-badge
+[badge-mysql]: https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff&style=for-the-badge
+[badge-swagger]: https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=000&style=for-the-badge
+
