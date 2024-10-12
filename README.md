@@ -13,4 +13,22 @@ Dentre os pacotes NuGet utilizados, o **AutoMapper** é o responsável pelo mape
 - **Geração de Relatórios**: Capacidade de exportar relatórios detalhados para **PDF e Excel**, oferecendo uma análise visual e eficaz das despesas
 - **RESTfull API com documentação Swagger**: Interface documentada que facilita a integração e o teste por parte dos desenvolvedores
 
-  
+
+## Getting Started
+
+Para obter uma copia local funcionando, siga estes passos simples.
+
+### Requisitos
+
+* Rider ou Visual Studio
+* Windows 10+ ou Linux/MacOs com [.NET SDK](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0) instalado
+* Docker
+
+### installation
+
+1. Clone o repositorio:
+```sh
+   git clone https://github.com/DevKayoS/CashFlow-Api.git
+```  
+3. Preencha as informacoes no arquivo `appsettings.Development.json`
+4. Execute a API e aproveite o seu teste :)
