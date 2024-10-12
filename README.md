@@ -21,7 +21,7 @@ Para obter uma copia local funcionando, siga estes passos simples.
 ### Requisitos
 
 * Rider ou Visual Studio
-* Windows 10+ ou Linux/MacOs com [.NET SDK](https://dotnet.microsoft.com/pt-br/download/dotnet/8.0) instalado
+* Windows 10+ ou Linux/MacOs com [.NET SDK][dot-net-sdk] instalado
 * Docker
 
 ### installation
@@ -32,3 +32,8 @@ Para obter uma copia local funcionando, siga estes passos simples.
 ```  
 3. Preencha as informacoes no arquivo `appsettings.Development.json`
 4. Execute a API e aproveite o seu teste :)
+
+
+
+<!-- Links -->
+[dot-net-sdk]: https://dotnet.microsoft.com/pt-br/download/dotnet/8.0
