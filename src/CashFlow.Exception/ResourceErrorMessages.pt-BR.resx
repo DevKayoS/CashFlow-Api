@@ -36,4 +36,13 @@
     <data name="EXPENSE_NOT_FOUND" xml:space="preserve">
         <value>Despesa nao encontrada</value>
     </data>
+    <data name="NAME_EMPTY" xml:space="preserve">
+        <value>O nome esta vazio</value>
+    </data>
+    <data name="EMAIL_EMPTY" xml:space="preserve">
+        <value>O email esta vazio</value>
+    </data>
+    <data name="EMAIL_INVALID" xml:space="preserve">
+        <value>Email invalido</value>
+    </data>
 </root>
