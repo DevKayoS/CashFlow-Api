@@ -105,6 +105,15 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A sua palavra-passe deve ter um mínimo de 8 caracteres, contendo pelo menos uma letra maiúscula, uma letra minúscula, um número e um carácter especial..
+        /// </summary>
+        internal static string INVALID_PASSWORD {
+            get {
+                return ResourceManager.GetString("INVALID_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to O nome esta vazio.
         /// </summary>
         internal static string NAME_EMPTY {
