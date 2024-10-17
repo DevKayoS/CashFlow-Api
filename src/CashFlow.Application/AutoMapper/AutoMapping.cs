@@ -16,7 +16,9 @@ public class AutoMapping : Profile
     private void RequestToEntity()
     {
         CreateMap<RequestExpenseJson, Expense>();
-        CreateMap<RequestRegisterUserJson, User>();
+        // autoMapper would be to ignore the password
+        CreateMap<RequestRegisterUserJson, User>()
+            .ForMember(entityUser => entityUser.Password, config => config.Ignore());
     }
 
     private void EntityToResponse()
