@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infrastructure.DataAccess.User;
 
-internal class UserRepository : IUserReadOnlyRepository
+internal class UserRepository : IUserReadOnlyRepository, IUserWriteOnlyRepository
 {
     private readonly CashFlowDbContext _dbContext;
     public UserRepository(CashFlowDbContext dbContext)
@@ -14,5 +14,10 @@ internal class UserRepository : IUserReadOnlyRepository
     public async Task<bool> ExistActiveUserWithEmail(string email)
     {
        return await _dbContext.Users.AnyAsync(user => user.Email.Equals(email));
+    }
+
+    public async Task Add(Domain.Entities.User user)
+    {
+        await _dbContext.Users.AddAsync(user);
     }
 }
