@@ -15,20 +15,20 @@ public class RegisterUserUseCase : IRegisterUserUseCase
 {
     private readonly IMapper _mapper;
     private readonly IPasswordEncripter _passwordEncripter;
-    private readonly IUserReadOnlyRepository _repository;
+    private readonly IUserReadOnlyRepository _userReadOnlyRepository;
     private readonly IUserWriteOnlyRepository _userWriteOnlyRepository;
     private readonly IUnitOfWork _unitOfWork;
 
     public RegisterUserUseCase(IMapper mapper, 
         IPasswordEncripter passwordEncripter,
-        IUserReadOnlyRepository repository,
+        IUserReadOnlyRepository userReadOnlyRepository,
         IUserWriteOnlyRepository userWriteOnlyRepository,
         IUnitOfWork unitOfWork
         )
     {
         _mapper = mapper;
         _passwordEncripter = passwordEncripter;
-        _repository = repository;
+        _userReadOnlyRepository = userReadOnlyRepository;
         _userWriteOnlyRepository = userWriteOnlyRepository;
         _unitOfWork = unitOfWork;
     }
@@ -39,9 +39,11 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         
         var user = _mapper.Map<Domain.Entities.User>(request);
         user.Password = _passwordEncripter.Encrypt(request.Password);
-        user.UserIdentifier.
-            
-        await _unitOfWork.Commit();
+        user.UserIdentifier = Guid.NewGuid();
+        
+        //added user in database
+        await _userWriteOnlyRepository.Add(user);   
+        await  _unitOfWork.Commit();
         
         return new ResponseRegisteredUserJson
         {
@@ -54,7 +56,7 @@ public class RegisterUserUseCase : IRegisterUserUseCase
     {
         var result = new RegisterUserValidator().Validate(request);
 
-        var emailExist = await _repository.ExistActiveUserWithEmail(request.Email);
+        var emailExist = await _userReadOnlyRepository.ExistActiveUserWithEmail(request.Email);
 
         if (emailExist)
         {
