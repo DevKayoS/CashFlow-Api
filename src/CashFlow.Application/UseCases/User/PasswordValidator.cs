@@ -51,7 +51,7 @@ public class PasswordValidator<T> : PropertyValidator<T, string>
             return false;
         }
         
-        if (Regex.IsMatch(password, @"[\!\?\*\.]+") == false)
+        if (Regex.IsMatch(password, @"[\!\?\*\.\@\#\$\%\&]+") == false)
         {
             context.MessageFormatter.AppendArgument(ERROR_MESSAGE_KEY, ResourceErrorMessages.INVALID_PASSWORD);
             return false;
