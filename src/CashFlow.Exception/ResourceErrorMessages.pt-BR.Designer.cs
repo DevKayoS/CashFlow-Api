@@ -96,6 +96,15 @@ namespace CashFlow.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email ou senha são invalidos.
+        /// </summary>
+        internal static string EMAIL_OR_PASSWORD_INVALID {
+            get {
+                return ResourceManager.GetString("EMAIL_OR_PASSWORD_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to As despesas não podem ser para o futuro..
         /// </summary>
         internal static string EXPANSES_CANNOT_FOR_THE_FUTURE {
