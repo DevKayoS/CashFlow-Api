@@ -22,7 +22,7 @@ builder.Services.AddInfraestructure(builder.Configuration);
 builder.Services.AddApplication();
 
 //configurando a api para autenticacao
-var signingKey = builder.Configuration.GetValue<string>("Settings:Jwt:SigningKey")
+var signingKey = builder.Configuration.GetValue<string>("Settings:Jwt:SigningKey");
     
 builder.Services.AddAuthentication(config =>
 {
