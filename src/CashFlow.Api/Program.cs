@@ -9,12 +9,42 @@ using CashFlow.Infrastructure;
 using CashFlow.Infrastructure.Migrations;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(config =>
+{
+    config.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = @"JWT Authorization header using the bearer scheme.
+                        Enter 'Bearer' [space] and then your token in the text input bellow.
+                        Example: 'Bearer 123adcdef'",
+        In = ParameterLocation.Header,
+        Scheme = "Bearer",
+        Type = SecuritySchemeType.ApiKey
+    });
+    config.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference =  new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                },
+                Scheme = "oauth2",
+                Name = "Bearer",
+                In  = ParameterLocation.Header
+            },
+            new List<string>()
+        }
+    });
+});
 // configurando injecao de dependencia do projeto de infraestrutura ja que esta como internal
 // pode ser feito assim -> DependencyInjectionExtension.AddInfraestructure(builder.Services);
 builder.Services.AddInfraestructure(builder.Configuration);
