@@ -38,19 +38,41 @@ public class RegisterUserUseCaseTest
         result.Where(ex => ex.GetErrors().Count == 1 && ex.GetErrors().Contains(ResourceErrorMessages.NAME_EMPTY));
     }
 
-    private RegisterUserUseCase CreateUseCase()
+    [Fact]
+    public async Task Error_Email_Already_Exits()
+    {
+        var request = RequestsRegisterUserJsonBuilder.Build();
+
+        var useCase = CreateUseCase(request.Email);
+        // armazenando a funcao de execute do useCase numa variavel
+        var act = async () => await useCase.Execute(request);
+        
+        // aqui estamos esperando que seja lancada uma exception do tipo ErrorOnValidationException
+        var result = await act.Should().ThrowAsync<ErrorOnValidationException>();
+        // testando para ver qual mensagem a exception lancou
+        result.Where(ex =>
+            ex.GetErrors().Count == 1 && ex.GetErrors().Contains(ResourceErrorMessages.EMAIL_ALREADY_REGISTERED));
+
+    }
+    
+    private RegisterUserUseCase CreateUseCase(string? email = null)
     {
         var mapper = MapperBuilder.Build();
         var unitOfWork = UnitOfWorkBuilder.Build();
         var writeOnlyRepository = UserWriteOnlyRepositoryBuilder.Build();
         var passwordEncripter = PasswordEncripeterBuilder.Build();
         var tokenGenerator = JwtTokenGeneratorBuilder.Build();
-        var readOnlyRepository = new UserReadOnlyRepositoryBuilder().Build();
+        var readOnlyRepository = new UserReadOnlyRepositoryBuilder();
+
+        if (string.IsNullOrWhiteSpace(email) == false)
+        {
+            readOnlyRepository.ExistActiveUserWithEmail(email);
+        }
         
         return new RegisterUserUseCase(
             mapper, 
             passwordEncripter,
-            readOnlyRepository,
+            readOnlyRepository.Build(),
             writeOnlyRepository,
             unitOfWork,
             tokenGenerator
