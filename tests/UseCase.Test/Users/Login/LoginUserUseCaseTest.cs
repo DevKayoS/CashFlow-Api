@@ -17,7 +17,9 @@ public class LoginUserUseCaseTest
       var user = UserBuilder.Build();
     
       var request = RequestLoginUserJsonBuilder.Build();
-      var useCase = CreateUseCase(user);
+      request.Email = user.Email;
+      
+      var useCase = CreateUseCase(user, request.Password);
 
       var result = await useCase.Execute(request);
       
@@ -38,9 +40,9 @@ public class LoginUserUseCaseTest
       
    }
 
-   private LoginUserUseCase CreateUseCase(User user)
+   private LoginUserUseCase CreateUseCase(User user, string password)
    {
-      var passwordEncripter = PasswordEncripeterBuilder.Build();
+      var passwordEncripter = new PasswordEncrypterBuilder().Verify(password).Build();
       var tokenGenerator = JwtTokenGeneratorBuilder.Build();
       var userReadOnlyRepository = new UserReadOnlyRepositoryBuilder().GetUserByEmail(user).Build();
       
